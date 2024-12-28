@@ -1,5 +1,7 @@
 # fsrs
 
+[![Test](https://github.com/eudoxia0/fsrs/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/eudoxia0/fsrs/actions/workflows/test.yaml)
+
 An implementation of the [FSRS] algorithm in Rust.
 
 [FSRS]: https://github.com/open-spaced-repetition/fsrs4anki
