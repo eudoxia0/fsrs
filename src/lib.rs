@@ -65,7 +65,7 @@ pub fn s_fail(d: D, s: S, r: R) -> S {
     let r_f = f64::exp(W[14] * (1.0 - r));
     let c_f = W[11];
     let s_f = d_f * s_f * r_f * c_f;
-    return f64::min(s_f, s);
+    f64::min(s_f, s)
 }
 
 pub fn stability(d: D, s: S, r: R, g: Grade) -> S {
