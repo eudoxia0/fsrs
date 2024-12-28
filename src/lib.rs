@@ -7,7 +7,7 @@ pub type R = f64;
 pub type S = f64;
 pub type D = f64;
 
-#[derive(PartialEq)]
+#[derive(Clone, Copy, PartialEq, Debug)]
 pub enum Grade {
     Forgot,
     Hard,
