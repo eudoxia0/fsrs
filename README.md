@@ -1,6 +1,7 @@
 # fsrs
 
 [![Test](https://github.com/eudoxia0/fsrs/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/eudoxia0/fsrs/actions/workflows/test.yaml)
+[![codecov](https://codecov.io/gh/eudoxia0/fsrs/graph/badge.svg?token=GOOTQRAFEC)](https://codecov.io/gh/eudoxia0/fsrs)
 
 An implementation of the [FSRS] algorithm in Rust.
 
