@@ -52,7 +52,7 @@ fn sim(grades: Vec<Grade>) -> Vec<Step> {
     let mut steps = vec![];
 
     // Initial review.
-    assert!(grades.len() > 0);
+    assert!(!grades.is_empty());
     let mut grades = grades.clone();
     let g: Grade = grades.remove(0);
     let mut s: S = s_0(g);
@@ -72,10 +72,6 @@ fn sim(grades: Vec<Grade>) -> Vec<Step> {
 
     steps
 }
-
-const F: Grade = Grade::Forgot;
-const H: Grade = Grade::Hard;
-const G: Grade = Grade::Good;
 
 /// Test a sequence of three easies.
 #[test]
