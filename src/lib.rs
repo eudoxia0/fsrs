@@ -28,8 +28,8 @@ impl From<Grade> for f64 {
 
 pub type T = f64;
 
-pub const F: f64 = 19.0 / 81.0;
-pub const C: f64 = -0.5;
+const F: f64 = 19.0 / 81.0;
+const C: f64 = -0.5;
 
 pub fn retrievability(t: T, s: S) -> R {
     (1.0 + F * (t / s)).powf(C)
@@ -48,7 +48,7 @@ pub fn s_0(g: Grade) -> S {
     }
 }
 
-pub fn s_success(d: D, s: S, r: R, g: Grade) -> S {
+fn s_success(d: D, s: S, r: R, g: Grade) -> S {
     let t_d = 11.0 - d;
     let t_s = s.powf(-W[9]);
     let t_r = f64::exp(W[10] * (1.0 - r)) - 1.0;
@@ -59,7 +59,7 @@ pub fn s_success(d: D, s: S, r: R, g: Grade) -> S {
     s * alpha
 }
 
-pub fn s_fail(d: D, s: S, r: R) -> S {
+fn s_fail(d: D, s: S, r: R) -> S {
     let d_f = d.powf(-W[12]);
     let s_f = (s + 1.0).powf(W[13] - 1.0);
     let r_f = f64::exp(W[14] * (1.0 - r));
@@ -85,11 +85,11 @@ pub fn difficulty(d: D, g: Grade) -> D {
     W[7] * d_0(Grade::Easy) + (1.0 - W[7]) * dp(d, g)
 }
 
-pub fn dp(d: D, g: Grade) -> f64 {
+fn dp(d: D, g: Grade) -> f64 {
     d + delta_d(g) * ((10.0 - d) / 9.0)
 }
 
-pub fn delta_d(g: Grade) -> f64 {
+fn delta_d(g: Grade) -> f64 {
     let g: f64 = g.into();
     -W[6] * (g - 3.0)
 }
