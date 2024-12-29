@@ -104,3 +104,35 @@ fn test_3e() {
         assert_eq!(actual, expected);
     }
 }
+
+/// Test a sequence of three goods.
+#[test]
+fn test_3g() {
+    let g = Grade::Good;
+    let grades = vec![g, g, g];
+    let expected = vec![
+        Step {
+            t: 0.0,
+            s: 3.17,
+            d: 5.28,
+            i: 3.0,
+        },
+        Step {
+            t: 3.0,
+            s: 10.73,
+            d: 5.27,
+            i: 11.0,
+        },
+        Step {
+            t: 14.0,
+            s: 34.57,
+            d: 5.26,
+            i: 35.0,
+        },
+    ];
+    let actual = sim(grades);
+    assert_eq!(expected.len(), actual.len());
+    for (expected, actual) in zip(expected, actual) {
+        assert_eq!(actual, expected);
+    }
+}
