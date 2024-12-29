@@ -57,7 +57,7 @@ fn sim(grades: Vec<Grade>) -> Vec<Step> {
     let g: Grade = grades.remove(0);
     let mut s: S = s_0(g);
     let mut d: D = d_0(g);
-    let mut i: T = interval(r_d, s).round();
+    let mut i: T = f64::max(interval(r_d, s).round(), 1.0);
     steps.push(Step { t, s, d, i });
 
     // n-th review
@@ -66,7 +66,7 @@ fn sim(grades: Vec<Grade>) -> Vec<Step> {
         let r: R = retrievability(i, s);
         s = stability(d, s, r, g);
         d = difficulty(d, g);
-        i = interval(r_d, s).round();
+        i = f64::max(interval(r_d, s).round(), 1.0);
         steps.push(Step { t, s, d, i });
     }
 
@@ -154,6 +154,32 @@ fn test_2h() {
             s: 1.70,
             d: 7.04,
             i: 2.0,
+        },
+    ];
+    let actual = sim(grades);
+    assert_eq!(expected.len(), actual.len());
+    for (expected, actual) in zip(expected, actual) {
+        assert_eq!(actual, expected);
+    }
+}
+
+/// Test a sequence of two forgots.
+#[test]
+fn test_2f() {
+    let g = Grade::Forgot;
+    let grades = vec![g, g];
+    let expected = vec![
+        Step {
+            t: 0.0,
+            s: 0.40,
+            d: 7.19,
+            i: 1.0,
+        },
+        Step {
+            t: 1.0,
+            s: 0.40,
+            d: 8.08,
+            i: 1.0,
         },
     ];
     let actual = sim(grades);
