@@ -77,7 +77,7 @@ pub fn stability(d: D, s: S, r: R, g: Grade) -> S {
 }
 
 fn clamp_d(d: D) -> D {
-    f64::max(f64::min(d, 10.0), 1.0)
+    d.clamp(1.0, 10.0)
 }
 
 pub fn d_0(g: Grade) -> D {
