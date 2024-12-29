@@ -76,8 +76,8 @@ fn sim(grades: Vec<Grade>) -> Vec<Step> {
 /// Test a sequence of three easies.
 #[test]
 fn test_3e() {
-    let e = Grade::Easy;
-    let grades = vec![e, e, e];
+    let g = Grade::Easy;
+    let grades = vec![g, g, g];
     let expected = vec![
         Step {
             t: 0.0,
