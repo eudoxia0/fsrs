@@ -136,3 +136,29 @@ fn test_3g() {
         assert_eq!(actual, expected);
     }
 }
+
+/// Test a sequence of two hards.
+#[test]
+fn test_2h() {
+    let g = Grade::Hard;
+    let grades = vec![g, g];
+    let expected = vec![
+        Step {
+            t: 0.0,
+            s: 1.18,
+            d: 6.48,
+            i: 1.0,
+        },
+        Step {
+            t: 1.0,
+            s: 1.70,
+            d: 7.04,
+            i: 2.0,
+        },
+    ];
+    let actual = sim(grades);
+    assert_eq!(expected.len(), actual.len());
+    for (expected, actual) in zip(expected, actual) {
+        assert_eq!(actual, expected);
+    }
+}
