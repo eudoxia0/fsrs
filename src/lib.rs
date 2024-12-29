@@ -76,13 +76,17 @@ pub fn stability(d: D, s: S, r: R, g: Grade) -> S {
     }
 }
 
+fn clamp_d(d: D) -> D {
+    f64::max(f64::min(d, 10.0), 1.0)
+}
+
 pub fn d_0(g: Grade) -> D {
     let g: f64 = g.into();
-    W[4] - f64::exp(W[5] * (g - 1.0)) + 1.0
+    clamp_d(W[4] - f64::exp(W[5] * (g - 1.0)) + 1.0)
 }
 
 pub fn difficulty(d: D, g: Grade) -> D {
-    W[7] * d_0(Grade::Easy) + (1.0 - W[7]) * dp(d, g)
+    clamp_d(W[7] * d_0(Grade::Easy) + (1.0 - W[7]) * dp(d, g))
 }
 
 fn dp(d: D, g: Grade) -> f64 {
