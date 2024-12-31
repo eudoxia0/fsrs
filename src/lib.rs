@@ -61,7 +61,7 @@ fn s_success(d: D, s: S, r: R, g: Grade) -> S {
 
 fn s_fail(d: D, s: S, r: R) -> S {
     let d_f = d.powf(-W[12]);
-    let s_f = (s + 1.0).powf(W[13] - 1.0);
+    let s_f = (s + 1.0).powf(W[13]) - 1.0;
     let r_f = f64::exp(W[14] * (1.0 - r));
     let c_f = W[11];
     let s_f = d_f * s_f * r_f * c_f;
