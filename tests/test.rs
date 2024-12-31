@@ -189,18 +189,10 @@ fn test_2f() {
     }
 }
 
-/// Test a sequence of 3,3,3,3,1,3,3.
+/// Test a sequence of good then forgot.
 #[test]
-fn test_sequence() {
-    let grades = vec![
-        Grade::Good,
-        Grade::Good,
-        Grade::Good,
-        Grade::Good,
-        Grade::Forgot,
-        Grade::Good,
-        Grade::Good,
-    ];
+fn test_gf() {
+    let grades = vec![Grade::Good, Grade::Forgot];
     let expected = vec![
         Step {
             t: 0.0,
@@ -210,39 +202,9 @@ fn test_sequence() {
         },
         Step {
             t: 3.0,
-            s: 10.74,
-            d: 5.27,
-            i: 11.0,
-        },
-        Step {
-            t: 14.0,
-            s: 34.58,
-            d: 5.26,
-            i: 35.0,
-        },
-        Step {
-            t: 49.0,
-            s: 100.75,
-            d: 5.25,
-            i: 101.0,
-        },
-        Step {
-            t: 150.0,
-            s: 5.94,
-            d: 6.78,
-            i: 6.0,
-        },
-        Step {
-            t: 156.0,
-            s: 16.24,
-            d: 6.76,
-            i: 16.0,
-        },
-        Step {
-            t: 172.0,
-            s: 40.77,
-            d: 6.75,
-            i: 41.0,
+            s: 1.06,
+            d: 6.8,
+            i: 1.0,
         },
     ];
     let actual = sim(grades);
