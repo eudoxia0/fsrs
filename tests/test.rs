@@ -188,3 +188,28 @@ fn test_2f() {
         assert_eq!(actual, expected);
     }
 }
+
+/// Test a sequence of good then forgot.
+#[test]
+fn test_gf() {
+    let grades = vec![Grade::Good, Grade::Forgot];
+    let expected = vec![
+        Step {
+            t: 0.0,
+            s: 3.17,
+            d: 5.28,
+            i: 3.0,
+        },
+        Step {
+            t: 3.0,
+            s: 1.06,
+            d: 6.8,
+            i: 1.0,
+        },
+    ];
+    let actual = sim(grades);
+    assert_eq!(expected.len(), actual.len());
+    for (expected, actual) in zip(expected, actual) {
+        assert_eq!(actual, expected);
+    }
+}
